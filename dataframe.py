@@ -13,8 +13,8 @@ dfHeader = spark.read.csv('SalesOrderHeader.csv', header=True, inferSchema=True)
 
 #Calculate the Table with customer ID and their spending.
 
-TotalPrice = dfDetail.select('*',(dfDetail.UnitPrice*dfDetail.OrderQty*(1-dfDetail.UnitPriceDiscount))  \
-        .alias('netprice')).groupBy('SalesOrderID').sum('netprice').withColumnRenamed('sum(netprice)','TotalPrice')
+TotalPrice = dfDetail.select('*',(dfDetail.UnitPrice*dfDetail.OrderQty*(1-dfDetail.UnitPriceDiscount)).alias('netprice'))   \
+    .groupBy('SalesOrderID').sum('netprice').withColumnRenamed('sum(netprice)','TotalPrice')
 
 CustomID = dfCustomer.join(dfHeader,'CustomerID','left').select('CustomerID','SalesOrderID')
 
