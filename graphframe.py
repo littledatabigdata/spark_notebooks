@@ -1,4 +1,22 @@
+
+# coding: utf-8
+from pyspark import SparkContext
+from pyspark.sql import SparkSession
+
+# pyspark --packages graphframes:graphframes:0.6.0-spark2.3-s_2.11
+
+sc = SparkContext()
+
+# sc.addPyFile("../graphframes-0.5.0-spark2.1-s_2.11.jar")
+
 from graphframes import *
+from graphframes import GraphFrame
+from pyspark.sql.functions import *
+
+spark = SparkSession \
+    .builder \
+    .getOrCreate()
+
 v = spark.createDataFrame([
  ("a", "Alice", 34),
  ("b", "Bob", 36),
