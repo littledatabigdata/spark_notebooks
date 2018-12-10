@@ -10,7 +10,8 @@ sc = SparkContext()
 # sc.addPyFile("../graphframes-0.5.0-spark2.1-s_2.11.jar")
 
 from graphframes import *
-from graphframes import GraphFrame
+
+# from graphframes import GraphFrame
 from pyspark.sql.functions import *
 
 spark = SparkSession \
